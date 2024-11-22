@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isEdit ? 'Editar Transacción' : 'Agregar Transacción' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <!-- Campo para Monto -->
+    <ion-item>
+      <ion-label position="floating">Monto</ion-label>
+      <ion-input type="number" formControlName="amount"></ion-input>
+    </ion-item>
+
+    <!-- Campo para Descripción -->
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+
+    <!-- Campo para Fecha -->
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-datetime 
+        formControlName="date" 
+        displayFormat="DD/MM/YYYY"
+        [min]="minDate">
+      </ion-datetime>
+    </ion-item>
+
+    <!-- Usuario (obtenido desde localStorage) -->
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input formControlName="userId" type="text" [value]="userId" readonly></ion-input>
+    </ion-item>
+
+    <!-- Categoría -->
+    <ion-item>
+      <ion-label position="floating">Categoría</ion-label>
+      <ion-select formControlName="categoryId">
+        <ion-select-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.description }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Botón de Submit -->
+    <ion-button expand="full" type="submit" [disabled]="!transactionForm.valid">
+      {{ isEdit ? 'Actualizar Transacción' : 'Agregar Transacción' }}
+    </ion-button>
+  </form>
+</ion-content>

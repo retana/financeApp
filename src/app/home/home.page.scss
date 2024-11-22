@@ -1,0 +1,23 @@
+/* src/app/home/home.page.scss */
+
+/* Estilo global para los tabs */
+ion-tab-bar {
+  background-color: #FF5722;  /* Naranja principal */
+}
+
+/* Estilo de los botones de los tabs */
+ion-tab-button {
+  --color-selected: #ffffff;  /* Color del texto seleccionado */
+  --color: #FF7043;           /* Color del texto no seleccionado */
+}
+
+/* Estilos para las secciones de contenido */
+ion-content {
+  background-color: #F5F5F5;
+  padding: 10px;
+}
+
+ion-header {
+  --background: #FF7043;  /* Color de fondo para los headers */
+  --color: #ffffff;       /* Color del texto */
+}

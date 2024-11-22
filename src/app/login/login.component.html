@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="default">
+    <ion-title>IDENTIFICATE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+   <!-- Imagen de Login -->
+   <div class="login-image-container">
+    <ion-img src="assets/img/login-icon.svg" alt="Imagen de Login" class="login-image"></ion-img>
+  </div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input
+        type="email"
+        formControlName="email"
+        required
+        autofocus
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input
+        type="password"
+        formControlName="password"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="!loginForm.valid">
+      Iniciar Sesión
+    </ion-button>
+
+    <div *ngIf="loginError" class="error-message">
+      <ion-text color="danger">{{ loginError }}</ion-text>
+    </div>
+  </form>
+</ion-content>

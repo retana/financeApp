@@ -1,0 +1,28 @@
+<!-- category-stats.component.html -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Estadísticas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLoading">
+  <ion-list *ngIf="categoryStats.length > 0">
+    <ion-item *ngFor="let stat of categoryStats">
+      <ion-label>
+        <h2>{{ stat.categoryDescription }}</h2>
+        <p>Total Gastado: {{ stat.totalAmount | currency }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item *ngIf="categoryStats.length === 0">
+    <ion-label>
+      <p>No se encontraron estadísticas</p>
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-loading *ngIf="isLoading" message="Cargando estadísticas..."></ion-loading>
